@@ -42,7 +42,7 @@ void newEdge(ptrgraph g, int src, int dest, int weight)
     }
     else {
         ptrnode n = newNode(dest, weight);
-        n->next = g->gr[src].head->next;
+        n->next = g->gr[src].head;
         g->gr[src].head = n;
     }
     return;
@@ -112,9 +112,37 @@ void printGraph(ptrgraph g)
 
         while(n != NULL) {
             printf("%d (%d) ", n->dest, n->weight);
+            n = n->next;
         }
 
         printf("\n");
     }
 }
 
+void newVertex(ptrgraph g, int num)
+{
+    int foundver = 0;
+    for(int i = 0; i < g->num_vertices; i++) {
+        if (g->gr[i].id == num) {
+            foundver = 1;
+            break;
+        }
+    }
+
+    if(foundver == 1 || num < 0) {
+        printf("This vertex ID already exists or you entered an invalid number. Please try again\n");
+        return;
+    }
+
+    g->num_vertices++;
+
+    realloc(g->gr, g->num_vertices * sizeof(headnode));
+
+    g->gr[g->num_vertices - 1].id = num;
+    g->gr[g->num_vertices - 1].head = NULL;
+}
+
+void deleteVertex(ptrgraph g, int num)
+{
+    
+}

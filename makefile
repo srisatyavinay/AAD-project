@@ -1,1 +1,2 @@
-gcc main.c graph.c -o runMe
+all:
+	gcc main.c graph.c exit.c -o runMe

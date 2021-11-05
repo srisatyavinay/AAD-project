@@ -39,6 +39,6 @@ ptrnode newNode(int, int);
 void newVertex(ptrgraph, int);
 void deleteVertex(ptrgraph, int);
 void printGraph(ptrgraph);
-void exitFunction(ptrgraph g)
+void exitFunction(ptrgraph g);
 
 #endif

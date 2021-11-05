@@ -26,8 +26,9 @@ int main()
     printf("is created\n\n");
 
     for(;;) {
+        printf("\n\n");
         printf("Available functions are the follwing:\n");
-        printf("1. Show the graph (print it on the screen)");
+        printf("1. Show the graph (print it on the screen)\n");
         printf("2. Create a unidirectional edge\n");
         printf("3. Create a bidirectional edge\n");
         printf("4. Delete a unidirectional edge\n");
@@ -35,10 +36,13 @@ int main()
         printf("6. Add a node (vertex)\n");
         printf("7. Delete a node(vertex)\n");
         printf("8. Exit function\n");
+        printf("\nEnter command no. : ");
 
         int inp;
 
         scanf("%d", &inp);
+
+        printf("\n\n");
 
         if(inp == 1) {
             printGraph(G);
@@ -85,10 +89,10 @@ int main()
 
         }
         else if (inp == 7) {
-            
+
         }
         else if (inp == 8) {
-            exitFunction(g);
+            exitFunction(G);
         }
         else {
             printf("Enter a valid number. Please try again\n");
