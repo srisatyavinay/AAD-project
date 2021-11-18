@@ -13,6 +13,9 @@ typedef headnode* listver;
 typedef struct Graph graph;
 typedef graph* ptrgraph;
 
+//global variables
+int total_nodes;
+
 //structure definitions
 struct Node {
     int dest;
@@ -23,6 +26,7 @@ struct Node {
 struct Headnode {
     // int invalid;
     int id;
+    int status; //0->normal, -1->deleted
     ptrnode head;
 };
 
@@ -35,10 +39,14 @@ struct Graph {
 ptrgraph createGraph(int);
 void newEdge(ptrgraph, int, int, int);
 void deleteEdge(ptrgraph, int, int);
+void deleteEdge2(ptrgraph, int, int);
 ptrnode newNode(int, int);
 void newVertex(ptrgraph, int);
 void deleteVertex(ptrgraph, int);
 void printGraph(ptrgraph);
 void exitFunction(ptrgraph g);
+
+void dfs(ptrgraph, int);
+void dfs_init(ptrgraph, int);
 
 #endif

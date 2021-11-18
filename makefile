@@ -1,2 +1,2 @@
 all:
-	gcc main.c graph.c exit.c -o runMe
+	gcc -g main.c graph.c exit.c dfs.c -o runMe
