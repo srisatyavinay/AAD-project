@@ -46,7 +46,8 @@ void deleteVertex(ptrgraph, int);
 void printGraph(ptrgraph);
 void exitFunction(ptrgraph g);
 
-void dfs(ptrgraph, int);
-void dfs_init(ptrgraph, int);
+void dfs(ptrgraph, int, int*);
+void dfs_init(ptrgraph);
+void dfs_init2(ptrgraph, int);
 
 #endif

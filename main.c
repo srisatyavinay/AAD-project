@@ -5,32 +5,51 @@ int main()
     total_nodes = 0;
     int num_ver;
     ptrgraph G;
+    int chosen;
 
     printf("Hi there!\nPlease follow the commands\n\n");
 
-    printf("Enter the size of graph you want to create (no.of vertices)\n");
+    printf("Do you want to create a new graph from scratch (0) or want to check the functionalities using a pre-build default graph (1)\nEnter 0 or 1: ");
 
-    scanf("%d", &num_ver);
+    scanf("%d", &chosen);
 
-    if(num_ver <= 0)
+    if(chosen == 0)
     {
-        printf("Please execute the file again and enter a valid number greater than equal to zero\nThank you\n");
+        printf("Enter the size of graph you want to create (no.of vertices)\n");
+
+        scanf("%d", &num_ver);
+
+        if (num_ver <= 0)
+        {
+            printf("Please execute the file again and enter a valid number greater than equal to zero\nThank you\n");
+        }
+
+        G = createGraph(num_ver);
+
+        total_nodes = num_ver;
+
+        printf("A graph with vertices ");
+
+        for (int i = 0; i < num_ver; i++)
+        {
+            printf("%d ", i);
+        }
+
+        printf("is created\n\n");
+    }
+    else if(chosen == 1)
+    {
+        G = createGraph(5);
+        total_nodes = 5;
+        printf("The default graph is as follows\n");
+        printGraph(G);
+    }
+    else
+    {
+        printf("Run the program again and enter a valid number\n");
     }
 
-    G = createGraph(num_ver);
-
-    total_nodes = num_ver;
-
-    printf("A graph with vertices ");
-
-    for(int i = 0; i < num_ver; i++)
-    {
-        printf("%d ", i);
-    }
-
-    printf("is created\n\n");
-
-    for(;;)
+    for (;;)
     {
         printf("\n\n");
         printf("Available functions are the follwing:\n");
@@ -41,7 +60,9 @@ int main()
         printf("5. Delete a bidirectional edge\n");
         printf("6. Add a node (vertex)\n");
         printf("7. Delete a node(vertex)\n");
-        printf("8. Exit function\n");
+        printf("8. Run DFS for the whole graph\n");
+        printf("9. Run DFS starting from a vertex\n");
+        printf("10. Exit function\n");
         printf("\nEnter command no. : ");
 
         int inp;
@@ -50,7 +71,7 @@ int main()
 
         printf("\n\n");
 
-        if(inp == 1)
+        if (inp == 1)
         {
             printGraph(G);
         }
@@ -101,7 +122,7 @@ int main()
             int choice;
             printf("Do you want to create a vertex with ID %d (0) or want to create again a vertex that you deleted previously (1)\nEnter 0 or 1: ", total_nodes);
             scanf("%d", &choice);
-            if(choice == 0)
+            if (choice == 0)
             {
                 newVertex(G, total_nodes);
             }
@@ -110,10 +131,9 @@ int main()
                 int num;
                 printf("Enter the vertex ID you previously deleted and want to crete again: ");
                 scanf("%d", &num);
-                if(num < 0 || num >= total_nodes || G->gr[num].status != -1)
+                if (num < 0 || num >= total_nodes || G->gr[num].status != -1)
                 {
                     printf("Enter proper vertex ID\n");
-                    return;
                 }
                 else
                 {
@@ -130,6 +150,17 @@ int main()
         }
         else if (inp == 8)
         {
+            dfs_init(G);
+        }
+        else if (inp == 9)
+        {
+            int num;
+            printf("Enter the vertex ID from which you want to start DFS: ");
+            scanf("%d", &num);
+            dfs_init2(G, num);
+        }
+        else if (inp == 10)
+        {
             exitFunction(G);
         }
         else
@@ -137,7 +168,5 @@ int main()
             printf("Enter a valid number. Please try again\n");
         }
     }
-
-    return(0);
-
+    return (0);
 }
