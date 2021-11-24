@@ -13,7 +13,7 @@ int main()
 
     scanf("%d", &chosen);
 
-    if(chosen == 0)
+    if (chosen == 0)
     {
         printf("Enter the size of graph you want to create (no.of vertices)\n");
 
@@ -37,7 +37,7 @@ int main()
 
         printf("is created\n\n");
     }
-    else if(chosen == 1)
+    else if (chosen == 1)
     {
         G = createGraph(5);
         total_nodes = 5;
@@ -62,7 +62,9 @@ int main()
         printf("7. Delete a node(vertex)\n");
         printf("8. Run DFS for the whole graph\n");
         printf("9. Run DFS starting from a vertex\n");
-        printf("10. Exit function\n");
+        printf("10. Run BFS for the whole graph\n");
+        printf("11. Run BFS starting from a vertex\n");
+        printf("12. Exit function\n");
         printf("\nEnter command no. : ");
 
         int inp;
@@ -158,6 +160,17 @@ int main()
             printf("Enter the vertex ID from which you want to start DFS: ");
             scanf("%d", &num);
             dfs_init2(G, num);
+        }
+        else if (inp == 10)
+        {
+            bfs_init(G);
+        }
+        else if (inp == 11)
+        {
+            int num;
+            printf("Enter the vertex ID from which you want to start DFS: ");
+            scanf("%d", &num);
+            bfs_init2(G, num);
         }
         else if (inp == 10)
         {
