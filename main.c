@@ -64,7 +64,8 @@ int main()
         printf("9. Run DFS starting from a vertex\n");
         printf("10. Run BFS for the whole graph\n");
         printf("11. Run BFS starting from a vertex\n");
-        printf("12. Exit function\n");
+        printf("12. Run Dijkstra from a vertex\n");
+        printf("13. Exit function\n");
         printf("\nEnter command no. : ");
 
         int inp;
@@ -148,7 +149,14 @@ int main()
             int num;
             printf("Enter the vertex ID: ");
             scanf("%d", &num);
-            deleteVertex(G, num);
+            if(num == 0)
+            {
+                printf("You cannot delete vertex number 0. Try deleting another vertex\n");
+            }
+            else
+            {
+                deleteVertex(G, num);
+            }
         }
         else if (inp == 8)
         {
@@ -172,7 +180,21 @@ int main()
             scanf("%d", &num);
             bfs_init2(G, num);
         }
-        else if (inp == 10)
+        else if (inp == 12)
+        {
+            int num;
+            printf("Enter the vertex ID from which you want to start Dijkstra: ");
+            scanf("%d", &num);
+            if (num < 0 || num >= total_nodes || G->gr[num].status == -1)
+            {
+                printf("Enter proper vertex ID\n");
+            }
+            else
+            {
+                dijkstra(G, num);
+            }
+        }
+        else if (inp == 13)
         {
             exitFunction(G);
         }

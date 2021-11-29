@@ -1,6 +1,8 @@
 // Header files to be included
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+#include <stdbool.h>
 
 #ifndef __HEADERS_H
 #define __HEADERS_H
@@ -17,6 +19,11 @@ typedef struct Queue queue;
 typedef queue *ptrq;
 typedef struct Queuenode qnode;
 typedef qnode *ptrqnode;
+
+typedef struct MinHeapNode minheapnode;
+typedef minheapnode* ptrminheapnode;
+typedef struct MinHeap minheap;
+typedef minheap* ptrminheap;
 
 //global variables
 int total_nodes;
@@ -57,6 +64,21 @@ struct Queue
     ptrqnode front, rear;
 };
 
+//minheap datastructure defintions
+struct MinHeapNode
+{
+    int ver;
+    int dist;
+};
+
+struct MinHeap
+{
+    int size;
+    int capacity;
+    int *position;
+    ptrminheapnode* array;
+};
+
 //graph function declarations
 ptrgraph createGraph(int);
 void newEdge(ptrgraph, int, int, int);
@@ -84,5 +106,19 @@ ptrqnode newQueueNode(int);
 void enqueue(ptrq, int);
 int dequeue(ptrq);
 int isEmpty(ptrq q);
+
+//minheap function declarations
+ptrminheapnode newMinHeapNode(int, int);
+ptrminheap createMinHeap(int);
+void swapMinHeapNode(ptrminheapnode*, ptrminheapnode*);
+void minHeapify(ptrminheap, int);
+int isHeapEmpty(ptrminheap);
+ptrminheapnode extractMin(ptrminheap);
+void decreaseKey(ptrminheap, int, int);
+bool isInMinHeap(ptrminheap, int);
+
+//dijkstra function declarations
+void printArr(ptrgraph, int dist[], int);
+void dijkstra(ptrgraph, int);
 
 #endif
