@@ -59,12 +59,13 @@ int main()
         printf("4. Delete a unidirectional edge\n");
         printf("5. Delete a bidirectional edge\n");
         printf("6. Add a node (vertex)\n");
-        printf("7. Delete a node(vertex)\n");
-        printf("8. Run DFS for the whole graph\n");
-        printf("9. Run DFS starting from a vertex\n");
-        printf("10. Run BFS for the whole graph\n");
-        printf("11. Run BFS starting from a vertex\n");
-        printf("12. Run Dijkstra from a vertex\n");
+        // printf("7. Delete a node(vertex)\n");
+        printf("7. Run DFS for the whole graph\n");
+        printf("8. Run DFS starting from a vertex\n");
+        printf("9. Run BFS for the whole graph\n");
+        printf("10. Run BFS starting from a vertex\n");
+        printf("11. Run Dijkstra from a vertex\n");
+        printf("12. Run Bellman ford from a vertex\n");
         printf("13. Exit function\n");
         printf("\nEnter command no. : ");
 
@@ -123,64 +124,64 @@ int main()
         else if (inp == 6)
         {
             int choice;
-            printf("Do you want to create a vertex with ID %d (0) or want to create again a vertex that you deleted previously (1)\nEnter 0 or 1: ", total_nodes);
+            printf("Do you want to create a vertex with ID %d. Enter 0 or 1", total_nodes);
             scanf("%d", &choice);
-            if (choice == 0)
+            if (choice == 1)
             {
                 newVertex(G, total_nodes);
             }
-            else
-            {
-                int num;
-                printf("Enter the vertex ID you previously deleted and want to crete again: ");
-                scanf("%d", &num);
-                if (num < 0 || num >= total_nodes || G->gr[num].status != -1)
-                {
-                    printf("Enter proper vertex ID\n");
-                }
-                else
-                {
-                    G->gr[num].status = 0;
-                }
-            }
+            // else
+            // {
+            //     int num;
+            //     printf("Enter the vertex ID you previously deleted and want to crete again: ");
+            //     scanf("%d", &num);
+            //     if (num < 0 || num >= total_nodes || G->gr[num].status != -1)
+            //     {
+            //         printf("Enter proper vertex ID\n");
+            //     }
+            //     else
+            //     {
+            //         G->gr[num].status = 0;
+            //     }
+            // }
         }
+        // else if (inp == 7)
+        // {
+        //     int num;
+        //     printf("Enter the vertex ID: ");
+        //     scanf("%d", &num);
+        //     if(num == 0)
+        //     {
+        //         printf("You cannot delete vertex number 0. Try deleting another vertex\n");
+        //     }
+        //     else
+        //     {
+        //         deleteVertex(G, num);
+        //     }
+        // }
         else if (inp == 7)
-        {
-            int num;
-            printf("Enter the vertex ID: ");
-            scanf("%d", &num);
-            if(num == 0)
-            {
-                printf("You cannot delete vertex number 0. Try deleting another vertex\n");
-            }
-            else
-            {
-                deleteVertex(G, num);
-            }
-        }
-        else if (inp == 8)
         {
             dfs_init(G);
         }
-        else if (inp == 9)
+        else if (inp == 8)
         {
             int num;
             printf("Enter the vertex ID from which you want to start DFS: ");
             scanf("%d", &num);
             dfs_init2(G, num);
         }
-        else if (inp == 10)
+        else if (inp == 9)
         {
             bfs_init(G);
         }
-        else if (inp == 11)
+        else if (inp == 10)
         {
             int num;
             printf("Enter the vertex ID from which you want to start DFS: ");
             scanf("%d", &num);
             bfs_init2(G, num);
         }
-        else if (inp == 12)
+        else if (inp == 11)
         {
             int num;
             printf("Enter the vertex ID from which you want to start Dijkstra: ");
@@ -192,6 +193,20 @@ int main()
             else
             {
                 dijkstra(G, num);
+            }
+        }
+        else if (inp == 12)
+        {
+            int num;
+            printf("Enter the vertex ID from which you want to start Bellman ford algorithm: ");
+            scanf("%d", &num);
+            if (num < 0 || num >= total_nodes || G->gr[num].status == -1)
+            {
+                printf("Enter proper vertex ID\n");
+            }
+            else
+            {
+                bellman_ford(G, num);
             }
         }
         else if (inp == 13)

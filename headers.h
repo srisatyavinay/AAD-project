@@ -121,4 +121,7 @@ bool isInMinHeap(ptrminheap, int);
 void printArr(ptrgraph, int dist[], int);
 void dijkstra(ptrgraph, int);
 
+//bellaman ford function declarations
+void bellman_ford(ptrgraph, int);
+
 #endif
