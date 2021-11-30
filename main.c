@@ -66,7 +66,10 @@ int main()
         printf("10. Run BFS starting from a vertex\n");
         printf("11. Run Dijkstra from a vertex\n");
         printf("12. Run Bellman ford from a vertex\n");
-        printf("13. Exit function\n");
+        printf("13. Run Prim's algorihm to find minimum spanning tree\n");
+        printf("14. Topological sort\n");
+        // printf("15. Run Ford-Fulkerson algorithm\n");
+        printf("15. Exit function\n");
         printf("\nEnter command no. : ");
 
         int inp;
@@ -210,6 +213,14 @@ int main()
             }
         }
         else if (inp == 13)
+        {
+            Prims(G);
+        }
+        else if (inp == 14)
+        {
+            topological_sort_init(G);
+        }
+        else if (inp == 15)
         {
             exitFunction(G);
         }

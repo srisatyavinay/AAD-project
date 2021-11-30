@@ -25,6 +25,11 @@ typedef minheapnode* ptrminheapnode;
 typedef struct MinHeap minheap;
 typedef minheap* ptrminheap;
 
+typedef struct Stack stack;
+typedef stack* ptrstack;
+typedef struct Stacknode stacknode;
+typedef stacknode* ptrstacknode;
+
 //global variables
 int total_nodes;
 
@@ -62,6 +67,19 @@ struct Queuenode
 struct Queue
 {
     ptrqnode front, rear;
+};
+
+//stack datastructure strcuture defintions
+
+struct Stack
+{
+    ptrstacknode front;
+};
+
+struct Stacknode
+{
+    int val;
+    ptrstacknode next;
 };
 
 //minheap datastructure defintions
@@ -107,6 +125,13 @@ void enqueue(ptrq, int);
 int dequeue(ptrq);
 int isEmpty(ptrq q);
 
+//stack function declarations
+ptrstack newStack();
+ptrstacknode newStackNode(int);
+void push(ptrstack, int);
+int pop(ptrstack);
+int isEmptyStack(ptrstack);
+
 //minheap function declarations
 ptrminheapnode newMinHeapNode(int, int);
 ptrminheap createMinHeap(int);
@@ -123,5 +148,13 @@ void dijkstra(ptrgraph, int);
 
 //bellaman ford function declarations
 void bellman_ford(ptrgraph, int);
+
+//prim's algorithm
+void Prims(ptrgraph);
+void printPrimArr(int arr[], int);
+
+//topological sort function declarations
+void topological_sort(ptrgraph, int, int *, ptrstack s);
+void topological_sort_init(ptrgraph);
 
 #endif
